@@ -1,6 +1,8 @@
 # ⋆.˚🦋༘⋆ GO TOUR CAHYA CUTY ᯓ★
 #
 #
+## 1. Basic ✮⋆˙
+#
 ### Syntax dasar GO ✮⋆˙
 ```azure
 1. :=   digunakan untuk deklarasi dan inisialisasi variabel secara bersamaan.
@@ -12,6 +14,48 @@
 2. z, y := 15, 25       Deklarasi dan inisialisasi variabel z dan y dengan nilai 15 dan 25
 3. var y int            Deklarasi variabel y bertipe int tanpa inisialisasi
 4. var z = 20           Deklarasi variabel z dengan inisialisasi nilai 20
+```
+#
+#
+### Public vs Private ✮⋆˙
+```azure
+1. Public
+   - Nama variabel, fungsi, atau tipe data yang diawali dengan huruf kapital (A-Z) bersifat public.
+   - Dapat diakses dari paket lain.
+1. Private
+   - Nama variabel, fungsi, atau tipe data yang diawali dengan huruf kecil (a-z) bersifat private.
+   - Hanya dapat diakses dalam paket yang sama.
+```
+#
+#
+### var vs :=
+```azure
+1. var
+   - Digunakan untuk mendeklarasikan variabel dengan tipe data yang eksplisit.
+   - Contoh: var x int = 10
+2. :=
+   - Digunakan untuk mendeklarasikan dan menginisialisasi variabel secara otomatis dengan tipe data yang sesuai.
+   - Contoh: x := 10
+   
+var dapat digunakan berulang kali untuk mendeklarasikan variabel baru,
+sedangkan := hanya dapat digunakan sekali untuk mendeklarasikan variabel baru dalam satu blok kode.
+```
+##### ★ contoh var dapat digunakan berulang dalam 1 file tapi beda scope
+```go
+package main
+import "fmt"
+
+var x = 10 // scope: package
+func main() {
+	fmt.Println(x) // 10
+	var x = 20     // scope: fungsi main (menimpa x package)
+	fmt.Println(x) // 20
+	{
+		var x = 30     // scope: blok ini saja
+		fmt.Println(x) // 30
+	}
+	fmt.Println(x) // 20 (block sebelumnya tidak mempengaruhi)
+}
 ```
 #
 #

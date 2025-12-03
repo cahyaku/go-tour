@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"go-tour/contoh"
 	"math"
 	"math/cmplx"
 	"math/rand"
@@ -87,13 +88,9 @@ var i, j int = 1, 2
  * FUNGSI UTAMA
  */
 func main() {
-	s := "gopher"
-	fmt.Printf("Hello and welcome, %s!\n", s)
-
-	for i := 1; i <= 5; i++ {
-		fmt.Println("i =", 100/i)
-	}
-	fmt.Println("----------------------")
+	fmt.Println("==========================")
+	fmt.Println("====== BASIC GO ======")
+	fmt.Println("==========================")
 
 	// menggunakan dari package time
 	fmt.Println("The time is", time.Now())
@@ -174,4 +171,36 @@ func main() {
 	fmt.Println(needInt(Small))
 	fmt.Println(needFloat(Small))
 	fmt.Println(needFloat(Big))
+	fmt.Println()
+
+	// FlOW CONTROL
+	fmt.Println("==========================")
+	fmt.Println("====== FLOW CONTROL ======")
+	fmt.Println("==========================")
+
+	fmt.Println("1. Perbedaan akses fungsi dalam package dan antar package")
+	// LOOPING
+	// 1. Ini diakses dari package lain yaitu package contoh
+	contoh.PrintLoop()
+	// 2. Ini diakses dari package utama (main), jadi masih satu package
+	printLoop()
+	fmt.Println()
+
+	printLoop2()
+	printLoop3()
+	fmt.Println()
+
+	// IF STATEMENT
+	fmt.Println(sqrt(2))
+	isEven(7)
+	isEven(8)
+	fmt.Println()
+
+	// IF STATEMENT dengan statement short
+	fmt.Println(pow(3, 2, 10), pow(3, 3, 20))
+	// IF and Else
+	fmt.Println(pow2(3, 2, 10), pow2(3, 3, 20))
+	fmt.Println()
+
+	fmt.Println(Sqrt(2))
 }
