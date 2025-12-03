@@ -18,6 +18,28 @@ var (
 )
 
 /**
+ * Constanta
+ */
+const (
+	Big   = 1 << 100
+	Small = Big >> 99
+)
+
+/**
+ * Fungsi needInt menerima parameter bertipe int dan mengembalikan nilai bertipe int
+ */
+func needInt(x int) int {
+	return x*10 + 1
+}
+
+/**
+ * Fungsi needFloat menerima parameter bertipe float64 dan mengembalikan nilai bertipe float64
+ */
+func needFloat(x float64) float64 {
+	return x * 0.1
+}
+
+/**
  * 1. Fungsi untuk menjumlahkan dua bilangan bulat
  */
 func add(a int, b int) int {
@@ -71,50 +93,85 @@ func main() {
 	for i := 1; i <= 5; i++ {
 		fmt.Println("i =", 100/i)
 	}
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	// menggunakan dari package time
 	fmt.Println("The time is", time.Now())
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	// menggunakan dari package rand
 	fmt.Println("My favorite number is", rand.Intn(10))
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	fmt.Printf("Now you have %g problems.\n", math.Sqrt(7))
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	fmt.Println(add(1, 2))
 	fmt.Println(add2(3, 2))
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	// Menampilkan hasil dari fungsi swap
 	a, b := swap("Hello", "cahya")
 	fmt.Println(a, b)
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	fmt.Println(split(17))
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	// Menampilkan nilai variabel global
 	fmt.Println(c, python, java)
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	// Menampilkan nilai variabel i dan j yang dideklarasikan secara eksplisit
 	// serta variabel c, python, java yang dideklarasikan dan diinisialisasi secara singkat
 	var c, python, java = true, false, "no!"
 	fmt.Println(i, j, c, python, java)
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	// Deklarasi variabel singkat (Short variable declaration)
 	var i, j int = 1, 2
 	k := 3
 	fmt.Println(i, j, k)
-	fmt.Println()
+	fmt.Println("----------------------")
 
 	// Basic Types in Go
 	// Menampilkan tipe dan nilai dari variabel yang sudah dideklarasikan di awal
 	fmt.Printf("Type: %T Value: %v\n", ToBe, ToBe)
 	fmt.Printf("Type: %T Value: %v\n", MaxInt, MaxInt)
 	fmt.Printf("Type: %T Value: %v\n", z, z)
+	fmt.Println("----------------------")
+
+	// Nilai kosong untuk tiap tipe data
+	var i1 int
+	var f1 float64
+	var b1 bool
+	var s1 string
+	fmt.Printf("%v %v %v %q\n", i1, f1, b1, s1)
+	fmt.Println("----------------------")
+
+	// Konversi tipe data
+	var x1, y1 int = 3, 4
+	var f2 float64 = math.Sqrt(float64(x1*x1 + y1*y1))
+	var z1 uint = uint(f2)
+	fmt.Println(x1, y1, z1)
+	fmt.Println("----------------------")
+
+	// Inferensi tipe data: menentukan tipe data secara otomatis
+	v := 42 // change me!
+	fmt.Printf("v is of type %T\n", v)
+	fmt.Println("----------------------")
+
+	// Membuat constanta
+	const Pi = 3.14
+	fmt.Println("Value of Pi:", Pi)
+	const World = "世界"
+	fmt.Println("Hello", World)
+	const Truth = true
+	fmt.Println("Go rules?", Truth)
+	fmt.Println("----------------------")
+
+	// Menggunakan constanta Big dan Small
+	fmt.Println(needInt(Small))
+	fmt.Println(needFloat(Small))
+	fmt.Println(needFloat(Big))
 }
