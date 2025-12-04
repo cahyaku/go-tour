@@ -202,5 +202,29 @@ func main() {
 	fmt.Println(pow2(3, 2, 10), pow2(3, 3, 20))
 	fmt.Println()
 
+	// Exercise 1: Loops and Functions
 	fmt.Println(Sqrt(2))
+	fmt.Println()
+
+	// Switch Statement
+	printOperatingSystem()
+	fmt.Println()
+
+	// Switch evaluation order
+	whenIsSaturday()
+	fmt.Println()
+
+	// Switch with no condition
+	printGreeting()
+	fmt.Println()
+
+	// Defer statement
+	// Menunda eksekusi hingga fungsi yang memanggilnya selesai
+	// Jadi "World" akan dicetak setelah "Hello" dan "Cahya"
+	defer fmt.Println("World")
+	fmt.Println("Hello")
+	fmt.Println("Cahya")
+
+	// Contoh defer dalam loop
+	exampleDeferLoop()
 }

@@ -26,8 +26,13 @@
    - Nama variabel, fungsi, atau tipe data yang diawali dengan huruf kecil (a-z) bersifat private.
    - Hanya dapat diakses dalam paket yang sama.
 ```
-#
-#
+### Aturan Penulisan nama function
+```azure
+1. Dua function dengan nama sama dalam 1 file                   TIDAK BOLEH
+2. Nama sama tapi beda kapital misalnya (sqrt dan Sqrt)         BOLEH (dalam 1 package dan 1 file)
+3. Dua function dengan nama sama dalam file berbeda             TIDAK BOLEH
+4. Dua function nama sama di package berbeda                    BOLEH
+```
 ### var vs :=
 ```azure
 1. var
@@ -232,9 +237,7 @@ var z uint = uint(y)
 Keterangan:
     1. Konversi tipe harus dilakukan secara eksplisit di Go.
     2. Tidak ada konversi otomatis antar tipe.
-```
-#
-#
+``
 ### Type inference (Inferensi tipe) ✮⋆˙
 ```azure
 Saat mendeklarasikan variabel tanpa menyebutkan tipe, Go akan menginferensi tipe berdasarkan nilai inisialisasi.

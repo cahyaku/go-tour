@@ -4,8 +4,10 @@ import (
 	"fmt"
 )
 
+// Sqrt
 /**
- * Exercise 1: Loops and Functions
+ * Exercise: Loops and Functions
+ * Fungsi Sqrt menghitung akar kuadrat dari x menggunakan metode Newton-Raphson
  */
 func Sqrt(x float64) float64 {
 	z := 1.0 // tebakan awal

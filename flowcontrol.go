@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 /**
@@ -87,4 +88,69 @@ func pow2(x, n, lim float64) float64 {
 	}
 	// v tidak dapat digunakan disini
 	return lim
+}
+
+/**
+ * Switch
+ */
+func printOperatingSystem() {
+
+	fmt.Print("Go runs on ")
+	switch os := "linux"; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.\n", os)
+	}
+}
+
+/**
+ * Switch evaluation order
+ * Kondisi switch dievaluasi dari atas ke bawah,
+ * berhenti saat sebuah kondisi terpenuhi.
+ */
+func whenIsSaturday() {
+	fmt.Println("When's Saturday?")
+	today := time.Now().Weekday()
+
+	switch time.Saturday {
+	case today + 0:
+		fmt.Println("Sekarang.")
+	case today + 1:
+		fmt.Println("Besok.")
+	case today + 2:
+		fmt.Println("Dua hari lagi.")
+	default:
+		fmt.Println("Masih jauh.")
+	}
+}
+
+/**
+ * Switch without a condition
+ */
+func printGreeting() {
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon!")
+	default:
+		fmt.Println("Goof evening!")
+	}
+}
+
+/**
+ * Stacking Defers
+ */
+func exampleDeferLoop() {
+	fmt.Println("Counting...")
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+	fmt.Println("Done")
 }
