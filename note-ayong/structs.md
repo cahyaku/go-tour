@@ -3,7 +3,6 @@
 #
 ## 3. Structs ✮⋆˙
 #
-#
 ### Pointers ✮⋆˙
 ```azure
 Pointer digunakan untuk menyimpan alamat dari sebuah nilai.

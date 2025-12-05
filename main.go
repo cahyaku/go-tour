@@ -262,4 +262,13 @@ func main() {
 	// Arrays
 	showArrayExample()
 	fmt.Println()
+
+	fmt.Println("====================")
+	fmt.Println("====== Slices ======")
+	fmt.Println("====================")
+
+	// Demonstrasi perilaku slices terhadap array asalnya
+	demonstrateSlicesBehaviour()
+	fmt.Println()
+
 }
