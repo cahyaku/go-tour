@@ -221,10 +221,45 @@ func main() {
 	// Defer statement
 	// Menunda eksekusi hingga fungsi yang memanggilnya selesai
 	// Jadi "World" akan dicetak setelah "Hello" dan "Cahya"
-	defer fmt.Println("World")
+	defer fmt.Println("World") // ini akan muncul terakhir karena defer
 	fmt.Println("Hello")
 	fmt.Println("Cahya")
 
 	// Contoh defer dalam loop
 	exampleDeferLoop()
+	fmt.Println()
+
+	// FlOW CONTROL
+	fmt.Println("=====================")
+	fmt.Println("====== Structs ======")
+	fmt.Println("=====================")
+
+	// Pointer ke struct
+	showPointerStruct()
+	fmt.Println()
+
+	// Structs
+	fmt.Println(Vertex{1, 2})
+	fmt.Println()
+
+	// Akses properti struct
+	v1 := Vertex{1, 2}
+	fmt.Println("Ini structnya X:", v1.X)
+	fmt.Println("Ini structnya Y:", v1.Y)
+	fmt.Println()
+
+	// Pointer ke struct
+	v2 := Vertex{1, 2}
+	p := &v2
+	p.X = 1e9 // diubah melalui pointer menjadi 1e9
+	fmt.Println("Setelah diubah melalui pointer, ini structnya X:", v2.X, "dan Y:", v2.Y)
+	fmt.Println()
+
+	// Inisialisasi struct dan pointer ke struct
+	showVertexInitialization()
+	fmt.Println()
+
+	// Arrays
+	showArrayExample()
+	fmt.Println()
 }

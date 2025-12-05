@@ -195,6 +195,6 @@ done
 1
 0
 ```
-> ![img_4.png](img_4.png)
+> ![img_4.png](img/img_4.png)
 >> Jadi semua deferred print dijalankan mulai dari yang terakhir disimpan.
 

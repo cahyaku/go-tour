@@ -154,3 +154,40 @@ func exampleDeferLoop() {
 	}
 	fmt.Println("Done")
 }
+
+/**
+ * Inisialisasi struct dan pointer ke struct
+ */
+var (
+	v1 = Vertex{1, 2}  // memiliki tipe Vertex
+	v2 = Vertex{X: 1}  // Y:0 adalah implisit
+	v3 = Vertex{}      // X:0 dan Y:0
+	p  = &Vertex{1, 2} // memiliki tipe *Vertex
+)
+
+/**
+ * Menampilkan inisialisasi struct dari var di atas
+ */
+func showVertexInitialization() {
+	// v1 = Vertex{1, 2}
+	// v2 = Vertex{1, 0}
+	// v3 = Vertex{0, 0}
+	// p  = &Vertex{1, 2}
+	fmt.Println(v1, p, v2, v3)
+}
+
+/**
+ * Membuat array dan menampilkannya
+ */
+func showArrayExample() {
+	// Array dengan panjang tetap
+	var a [2]string
+	a[0] = "Hello"
+	a[1] = "World"
+	fmt.Println(a[0], a[1])
+	fmt.Println(a)
+
+	// Inisialisasi array dengan literal
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+	fmt.Println(primes)
+}
