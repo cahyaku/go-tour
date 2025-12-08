@@ -271,4 +271,44 @@ func main() {
 	demonstrateSlicesBehaviour()
 	fmt.Println()
 
+	// Inisialisasi slice
+	combineIntAndBool()
+	fmt.Println()
+
+	// Nilai default slice
+	sliceExample()
+	fmt.Println()
+
+	// PANJANG dan KAPASITAS SLICE
+	s := []int{2, 3, 5, 7, 11, 13}
+	printSlice(s)
+	// Mengubah panjang slice menjadi 0
+	s = s[:0]
+	printSlice(s)
+	// Menambah panjang slice menjadi 4
+	s = s[:4]
+	printSlice(s)
+	// Menghapus dua nilai pertama dari slice
+	s = s[2:]
+	printSlice(s)
+	fmt.Println()
+
+	// Nil Slices
+	nilsSliceDemo()
+	fmt.Println()
+
+	// Membuat slice dengan fungsi make
+	sliceMakeLenCapDemo()
+	fmt.Println()
+
+	// Slice of slice
+	displayTicTacToeBoard()
+	fmt.Println()
+
+	// Menambahkan elemen ke slice
+	sliceAppendDemo()
+	fmt.Println()
+
+	powerOfTwoRangeDemo()
+	fmt.Println()
 }
