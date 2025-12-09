@@ -305,10 +305,11 @@ func main() {
 	displayTicTacToeBoard()
 	fmt.Println()
 
-	// Menambahkan elemen ke slice
+	// Menambahkan elemen ke slice dengan fungsi Append
 	sliceAppendDemo()
 	fmt.Println()
 
+	// Perintah Range
 	powerOfTwoRangeDemo()
 	fmt.Println()
 }
