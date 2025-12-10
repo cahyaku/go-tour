@@ -164,11 +164,32 @@ func sliceAppendDemo() {
  * Perintah Range
  */
 func powerOfTwoRangeDemo() {
+	// mendeklarasikan slice of int bernama pow
 	var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
-	
+
+	// loop for dengan range
+	// range pow akan melakukan iterasi pada slice pow
 	for i, v := range pow {
 		fmt.Printf("2**%d = %d\n", i, v)
 	}
 
 	fmt.Println(pow)
+}
+
+/**
+ * Range Continued
+ */
+func demonstrateRange() {
+	// membuat slice dengan fungsi make, panjang 10, dan nilai default 0
+	pow := make([]int, 10)
+
+	// loop dengan range
+	for i := range pow {
+		// unit digunakan untuk menghitung nilai 2^i
+		pow[i] = 1 << uint(i)
+	}
+	//
+	for _, v := range pow {
+		fmt.Printf("%d\n", v)
+	}
 }

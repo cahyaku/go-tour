@@ -159,4 +159,37 @@ Perintah range pada perulangan for digunakan untuk mengintegrasikan sebuah slice
 
 Saat melakukan perulangan dengan range pada slice, dua nilai akan dikembalikan pada setiap iterasi.
 Nilai pertama yaitu indeks, dan nilai kedua yaitu salinan dari elemen pada indeks tersebut.
+
+Simplenya range: digunakan untuk mengambil index dan nilai satu-per-satu.
+Example:
+
+func main() {
+    angka := []it {10,20,30}
+    for i,v := range angka {
+        fmt.Println(i,v)
+    }
+}
+
+Hasil output:
+0 10
+1 20
+2 30
+
+Jadi i adalah index dan v adalah nilai pada index tersebut.
+```
+#
+#
+### Range Continued ✮⋆˙
+```azure
+Gunakan operator _ untuk melewatkan nilai index.
+Example:
+
+func main() {
+    angka := []int{10,20,30}
+    for _,v := range angka {
+        fmt.Println(v)
+    }
+}
+
+Contoh lain pada: func 
 ```
