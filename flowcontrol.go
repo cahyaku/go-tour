@@ -159,10 +159,10 @@ func exampleDeferLoop() {
  * Inisialisasi struct dan pointer ke struct
  */
 var (
-	v1 = Vertex{1, 2}  // memiliki tipe Vertex
-	v2 = Vertex{X: 1}  // Y:0 adalah implisit
-	v3 = Vertex{}      // X:0 dan Y:0
-	p  = &Vertex{1, 2} // memiliki tipe *Vertex
+	v1 = Vertex{1, 2, 0, 0}  // memiliki tipe Vertex
+	v2 = Vertex{X: 1}        // Y:0 adalah implisit
+	v3 = Vertex{}            // X:0 dan Y:0
+	p  = &Vertex{1, 2, 0, 0} // memiliki tipe *Vertex
 )
 
 /**

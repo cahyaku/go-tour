@@ -239,17 +239,19 @@ func main() {
 	fmt.Println()
 
 	// Structs
-	fmt.Println(Vertex{1, 2})
+	// Jangan hiraukan Lat dan Long, karena itu di pakai pada maps
+	// Jadi sementara bisa dikosongkan dulu
+	fmt.Println(Vertex{1, 2, 0, 0})
 	fmt.Println()
 
 	// Akses properti struct
-	v1 := Vertex{1, 2}
+	v1 := Vertex{1, 2, 0, 0}
 	fmt.Println("Ini structnya X:", v1.X)
 	fmt.Println("Ini structnya Y:", v1.Y)
 	fmt.Println()
 
 	// Pointer ke struct
-	v2 := Vertex{1, 2}
+	v2 := Vertex{1, 2, 0, 0}
 	p := &v2
 	p.X = 1e9 // diubah melalui pointer menjadi 1e9
 	fmt.Println("Setelah diubah melalui pointer, ini structnya X:", v2.X, "dan Y:", v2.Y)
@@ -311,5 +313,17 @@ func main() {
 
 	// Perintah Range
 	powerOfTwoRangeDemo()
+	fmt.Println()
+
+	// Exercise 2: SLICE
+	//pic.Show(Pic)
+
+	// Maps
+	fmt.Println("======================")
+	fmt.Println("======== Maps ========")
+	fmt.Println("======================")
+
+	// Inisialisasi Map
+	printLocationMap()
 	fmt.Println()
 }

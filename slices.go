@@ -188,7 +188,7 @@ func demonstrateRange() {
 		// unit digunakan untuk menghitung nilai 2^i
 		pow[i] = 1 << uint(i)
 	}
-	//
+	// loop menghilangkan nilai index
 	for _, v := range pow {
 		fmt.Printf("%d\n", v)
 	}

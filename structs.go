@@ -23,8 +23,13 @@ func showPointerStruct() {
  * Structs adalah tipe data komposit yang mengelompokkan
  * kumpulan properti/properti yang memiliki tipe data berbeda
  * menjadi satu kesatuan.
+ *
+ * Sesuaikan parameternya masing-masing.
+ * karena ada yang perlu dan tidak perlu, jika tidak tinggal tambahkan nilai default nol aja.
  */
 type Vertex struct {
 	X int
 	Y int
+	Lat,
+	Long float64
 }

@@ -191,5 +191,7 @@ func main() {
     }
 }
 
-Contoh lain pada: func 
+Jadi hanya nilai v yang akan diambil.
+Karena operator _ digunakan untuk melewatkan nilai index, begitu pula sebaliknya.
+
 ```
