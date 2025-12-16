@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 // Sqrt
@@ -43,4 +44,37 @@ func Pic(dx, dy int) [][]uint8 {
 		}
 	}
 	return img
+}
+
+// WordCount
+/**
+ * Exercise 3: Maps
+ * Fungsi ini mengembalikan sebuah map dari perhitungan setiap kata di dalam string s.
+ */
+func WordCount(s string) map[string]int {
+	// buat map kosong
+	result := make(map[string]int)
+
+	// pecah string menjadi kata-kata
+	words := strings.Fields(s)
+
+	// hitung setiap kata
+	for _, word := range words {
+		result[word]++
+	}
+	return result
+}
+
+// fibonacci mengembalikan sebuah closure
+// Exercise 4: Fungsi dengan closure
+// yang setiap kali dipanggil akan mengembalikan
+// angka fibonacci berikutnya
+func fibonacci() func() int {
+	a, b := 0, 1
+
+	return func() int {
+		result := a
+		a, b = b, a+b
+		return result
+	}
 }

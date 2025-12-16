@@ -323,7 +323,43 @@ func main() {
 	fmt.Println("======== Maps ========")
 	fmt.Println("======================")
 
+	// Create maps
+	createLocationMap()
+	fmt.Println()
+
 	// Inisialisasi Map
-	printLocationMap()
+	printLocationMap1()
+	fmt.Println()
+
+	// Inisialisasi Map lanjutan
+	printLocationMap2()
+	fmt.Println()
+
+	// Operasi Maps
+	manageMapValues()
+	fmt.Println()
+
+	// Exercise 3
+	//wc.Test(WordCount)
+
+	// Nilai Fungsi
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
+
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
+	fmt.Println()
+
+	// Fungsi closure, hmm aku pahamnya mirip seperti rekusif function sih.
+	runAccumulatorDemo()
+	fmt.Println()
+
+	// Menampilkan hasil dari function Fibonacci dengan closure
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
 	fmt.Println()
 }
