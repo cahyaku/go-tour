@@ -1,4 +1,4 @@
-# ⋆.˚🦋༘⋆ GO TOUR CAHYA CUTY ᯓ★
+# ⋆.˚🦋༘⋆ GO TOUR CAHYA CUTY ᯓ★ ּ ֶָ֢.
 #
 #
 ## 4. Maps ✮⋆˙
@@ -80,5 +80,30 @@ Fungsi closure bisa mengakses dan mengisi variabel yang dirujuk,
 dalam artian fungsi tersebut "terikat" ke variabel.
 
 example: pada function runAccumulatorDemo()
+
+
+Simplenya kita panggil fungsi blok luarnya, tapi fungsi blok luarnya juga bisa dipanggil sendiri.
+
+example:
+func taskCreator() func(string) {
+    total := 0
+
+    return func(title string) {
+        total++
+        fmt.Println("Task ke-", total, ":", title)
+    }
+}
+
+// Panggil fungsi blok luarnya
+addTask := taskCreator()
+
+addTask("Belajar Go")
+addTask("Ngopi")
+addTask("Tidur")
+
+// Output:
+Task ke- 1 : Belajar Go
+Task ke- 2 : Ngopi
+Task ke- 3 : Tidur
 ```
 
