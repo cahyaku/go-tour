@@ -5,7 +5,7 @@ import "fmt"
 /**
  * Pointer digunakan untuk menyimpan alamat memori dari sebuah variabel.
  */
-func showPointerStruct() {
+func (v Vertex) showPointerStruct() {
 	i, j := 42, 2701
 
 	p := &i // menunjuk ke i jadi isinya 42
@@ -18,6 +18,7 @@ func showPointerStruct() {
 	fmt.Println(j) // lihat j terbaru dari 2701 jadi 73
 }
 
+// Vertex
 /**
  * STRUCTS
  * Structs adalah tipe data komposit yang mengelompokkan

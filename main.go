@@ -235,7 +235,7 @@ func main() {
 	fmt.Println("=====================")
 
 	// Pointer ke struct
-	showPointerStruct()
+	//showPointerStruct()
 	fmt.Println()
 
 	// Structs
@@ -361,5 +361,41 @@ func main() {
 	for i := 0; i < 10; i++ {
 		fmt.Println(f())
 	}
+	fmt.Println()
+
+	// Methods
+	fmt.Println("======================")
+	fmt.Println("======= Methods ======")
+	fmt.Println("======================")
+
+	// example 1 memanggil method pada struct vertex
+	x := Vertex{
+		5,
+		7,
+		4,
+		2,
+	}
+	x.showPointerStruct()
+	fmt.Println()
+
+	// example 2 memanggil method pada struct greet
+	p1 := Person{
+		"Cahya",
+	}
+	p1.SayHello()
+	fmt.Println()
+
+	// Method adalah fungsi
+	// Ini menggunakan function biasa
+	// Function yang memiliki parameter yang berbeda dengan function biasa
+	p2 := Person{
+		"om adhi",
+	}
+	fmt.Println(SayHello(p2))
+	fmt.Println()
+
+	// Method lanjutan
+	myfloat := MyFloat(-math.Sqrt2)
+	fmt.Println(myfloat.Abs())
 	fmt.Println()
 }
