@@ -235,21 +235,23 @@ func main() {
 	fmt.Println("=====================")
 
 	// Pointer ke struct
-	showPointerStruct()
+	//showPointerStruct()
 	fmt.Println()
 
 	// Structs
-	fmt.Println(Vertex{1, 2})
+	// Jangan hiraukan Lat dan Long, karena itu di pakai pada maps
+	// Jadi sementara bisa dikosongkan dulu
+	fmt.Println(Vertex{1, 2, 0, 0})
 	fmt.Println()
 
 	// Akses properti struct
-	v1 := Vertex{1, 2}
+	v1 := Vertex{1, 2, 0, 0}
 	fmt.Println("Ini structnya X:", v1.X)
 	fmt.Println("Ini structnya Y:", v1.Y)
 	fmt.Println()
 
 	// Pointer ke struct
-	v2 := Vertex{1, 2}
+	v2 := Vertex{1, 2, 0, 0}
 	p := &v2
 	p.X = 1e9 // diubah melalui pointer menjadi 1e9
 	fmt.Println("Setelah diubah melalui pointer, ini structnya X:", v2.X, "dan Y:", v2.Y)
@@ -271,4 +273,129 @@ func main() {
 	demonstrateSlicesBehaviour()
 	fmt.Println()
 
+	// Inisialisasi slice
+	combineIntAndBool()
+	fmt.Println()
+
+	// Nilai default slice
+	sliceExample()
+	fmt.Println()
+
+	// PANJANG dan KAPASITAS SLICE
+	s := []int{2, 3, 5, 7, 11, 13}
+	printSlice(s)
+	// Mengubah panjang slice menjadi 0
+	s = s[:0]
+	printSlice(s)
+	// Menambah panjang slice menjadi 4
+	s = s[:4]
+	printSlice(s)
+	// Menghapus dua nilai pertama dari slice
+	s = s[2:]
+	printSlice(s)
+	fmt.Println()
+
+	// Nil Slices
+	nilsSliceDemo()
+	fmt.Println()
+
+	// Membuat slice dengan fungsi make
+	sliceMakeLenCapDemo()
+	fmt.Println()
+
+	// Slice of slice
+	displayTicTacToeBoard()
+	fmt.Println()
+
+	// Menambahkan elemen ke slice dengan fungsi Append
+	sliceAppendDemo()
+	fmt.Println()
+
+	// Perintah Range
+	powerOfTwoRangeDemo()
+	fmt.Println()
+
+	// Exercise 2: SLICE
+	//pic.Show(Pic)
+
+	// Maps
+	fmt.Println("======================")
+	fmt.Println("======== Maps ========")
+	fmt.Println("======================")
+
+	// Create maps
+	createLocationMap()
+	fmt.Println()
+
+	// Inisialisasi Map
+	printLocationMap1()
+	fmt.Println()
+
+	// Inisialisasi Map lanjutan
+	printLocationMap2()
+	fmt.Println()
+
+	// Operasi Maps
+	manageMapValues()
+	fmt.Println()
+
+	// Exercise 3
+	//wc.Test(WordCount)
+
+	// Nilai Fungsi
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
+
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
+	fmt.Println()
+
+	// Fungsi closure, hmm aku pahamnya mirip seperti rekusif function sih.
+	runAccumulatorDemo()
+	fmt.Println()
+
+	// Menampilkan hasil dari function Fibonacci dengan closure
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
+	fmt.Println()
+
+	// Methods
+	fmt.Println("======================")
+	fmt.Println("======= Methods ======")
+	fmt.Println("======================")
+
+	// example 1 memanggil method pada struct vertex
+	x := Vertex{
+		5,
+		7,
+		4,
+		2,
+	}
+	x.showPointerStruct()
+	fmt.Println()
+
+	// example 2 memanggil method pada struct greet
+	p1 := Person{
+		"Cahya",
+	}
+	p1.SayHello()
+	fmt.Println()
+
+	// Method adalah fungsi
+	// Ini menggunakan function biasa
+	// Function yang memiliki parameter yang berbeda dengan function biasa
+	p2 := Person{
+		"om adhi",
+	}
+	fmt.Println(SayHello(p2))
+	fmt.Println()
+
+	// Method lanjutan
+	myfloat := MyFloat(-math.Sqrt2)
+	fmt.Println(myfloat.Abs())
+	fmt.Println()
 }
