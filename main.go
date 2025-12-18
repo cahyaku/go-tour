@@ -368,7 +368,7 @@ func main() {
 	fmt.Println("======= Methods ======")
 	fmt.Println("======================")
 
-	// example 1 memanggil method pada struct vertex
+	//1)  example 1 memanggil method pada struct vertex
 	x := Vertex{
 		5,
 		7,
@@ -385,7 +385,7 @@ func main() {
 	p1.SayHello()
 	fmt.Println()
 
-	// Method adalah fungsi
+	// 2) Method adalah fungsi
 	// Ini menggunakan function biasa
 	// Function yang memiliki parameter yang berbeda dengan function biasa
 	p2 := Person{
@@ -394,8 +394,20 @@ func main() {
 	fmt.Println(SayHello(p2))
 	fmt.Println()
 
-	// Method lanjutan
+	// 3) Method lanjutan, ini dengan tipe bukan struct
 	myfloat := MyFloat(-math.Sqrt2)
 	fmt.Println(myfloat.Abs())
+	fmt.Println()
+
+	// 4) Pointer-receiver
+	v3 := Vertex3{3, 4}
+	v3.Scale(10)
+	fmt.Println(v3.Abs())
+	fmt.Println()
+
+	// 5) Pointers and Function
+	v4 := Vertex4{3, 4}
+	Scale(&v4, 10)
+	fmt.Println(Abs(v4))
 	fmt.Println()
 }
