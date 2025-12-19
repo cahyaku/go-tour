@@ -442,4 +442,14 @@ func main() {
 	v7.Scale(5)
 	fmt.Printf("Setelah scaling: %+v, Abs: %v\n", v7, v7.Abs())
 	fmt.Println()
+
+	// Interfaces
+	fmt.Println("======================")
+	fmt.Println("===== Interfaces =====")
+	fmt.Println("======================")
+
+	//1) Interface dipenuhi secara implisit
+	var ii I = T{"hello"}
+	ii.M()
+	fmt.Println()
 }
