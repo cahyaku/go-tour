@@ -410,4 +410,36 @@ func main() {
 	Scale(&v4, 10)
 	fmt.Println(Abs(v4))
 	fmt.Println()
+
+	// 6) Method dan pointer tidak langsung
+	v5 := Vertex5{3, 4}
+	v5.Scale2(2)
+	ScaleFunc2(&v5, 10)
+
+	p3 := &Vertex5{4, 3}
+	p3.Scale2(3)
+	ScaleFunc2(p3, 8)
+
+	fmt.Println(v5, p3)
+	fmt.Println()
+
+	// 7) Method dan pointer tidak langsung
+	// Jadi perbedaan memanggilnya adalah
+	// yang pakai (.) => method
+	// tidak ada (.) => function
+	v6 := Vertex6{3, 4}
+	fmt.Println(v6.Abs())
+	fmt.Println(AbsFunc(v6))
+
+	p4 := &Vertex6{4, 3}
+	fmt.Println(p4.Abs())
+	fmt.Println(AbsFunc(*p4))
+	fmt.Println()
+
+	// 8) Memilih receiver sebagai nilai atau pointer
+	v7 := &Vertex7{3, 4}
+	fmt.Printf("Sebelum scaling: %+v, Abs: %v\n", v7, v7.Abs())
+	v7.Scale(5)
+	fmt.Printf("Setelah scaling: %+v, Abs: %v\n", v7, v7.Abs())
+	fmt.Println()
 }

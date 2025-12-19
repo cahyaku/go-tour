@@ -235,3 +235,136 @@ Mengapa v.Scale(5) boleh? Padahal v itu bukan pointer.
 Karena GO otomatis melakukan ini:
 v.Scale(5) -> diubah menjadi (&v).Scale(5)
 ```
+#
+#
+### Methods and Pointer Indirection (Method dan pointer tidak langsung) 2 ✮⋆˙
+```azure
+Fungsi yang menerima argumen nilai harus mendapatkan nilai dari tipe yang spesifik.
+Intinya:
+- Function = ketat soal tipe.
+- Method = lebih fleksibel dan pintar.
+
+example:
+1) Function: tipe harus pas (ketat)
+    // Function ini minta value Vertex, bukan pointer.
+    func AbsFunc(v Vertex) float64 {
+        return v.X + v.Y
+    }
+    
+    // Pemanggilnya
+    AbsFunc(v) // OK Vertex itu value
+    AbsFunc(&v) // ERROR (bukan vertex, tapi *Vertex)
+     
+2) Method: lebih fleksibel    
+    func (v Vertex) Abs() float64 {
+        return v.X + v.Y
+    }
+            
+    // Pemanggilnya
+    var v Vertex
+    fmt.Println(v.Abs()) // OK
+    
+    p := &v
+    fmt.Println(p.Abs()) // OK
+    
+    
+Example sederhana:
+    type User struct {
+	Name string
+}
+
+// FUNCTION (ketat)
+func ShowFunc(u User) {
+	fmt.Println(u.Name)
+}
+
+// METHOD (fleksibel)
+func (u User) ShowMethod() {
+	fmt.Println(u.Name)
+}
+
+func main() {
+	u := User{"Cahya"}
+	p := &u
+
+    // kalau function ketat:
+	ShowFunc(u)    // ✅
+	// ShowFunc(p) // ❌ ERROR
+
+    // kalau method fleksibel:
+	u.ShowMethod() // ✅
+	p.ShowMethod() // ✅ (auto dereference)
+}
+```
+#
+#
+### Memilih receiver sebagai nilai atau pointer ✮⋆˙
+```azure
+Ada dua alasan mengapa memilih receiver sebagai nilai atau pointer:
+1. Supaya method dapat mengubah nilai yang ditunjuk oleh receiver.
+2. Menghindari menyalin nilai setiap kali method dipanggil.
+
+Hal ini akan lebih efisien jika receiver adalah sebuah struct yang besar.
+
+Intinya:
+- Value receiver:
+    func (v Vertex) Method()
+- Pointer receiver:
+    func (v *Vertex) Method()
+
+Tujuan penggunaan pointer receiver adalah susya bisa mengubah data asli.
+
+Kesimpulan:
+Jika sebuah method perlu mengubah isi struct, maka wajib menggunakan pointer receiver.
+
+Example:
+    type Counter struct {
+        Value int
+    }
+    
+    func (c *Counter) Increment() {
+        c.Value++
+    }
+    
+    func (c *Counter) Get() int {
+    return c.Value
+    }
+
+Kenapa dua-duanya pointer?
+- Increment() -> ubah data
+- Get() -> konsisten dan efisien. 
+```
+#
+#
+### Sedikit tambahan cahya ✮⋆˙
+```azure
+Sebuah struct dapat memiliki banyak method receiver.
+
+Example:
+    type User struct {
+        Name string
+        Age int
+    }
+    
+    // value receiver
+    func (u User) Info() string {
+        return u.Name
+    }
+    
+    // pointer receiver
+    func (u *User) Birthday() {
+        u.Age++
+    }
+    
+    // pointer receiver
+    func (u *User) Rename(name string) {
+        u.Name = name
+    }
+
+1. Info() => hanya baca data
+2. Birthday => ubah data
+3. Rename => ubah data
+
+Jadi yang benar satu struct bisa punya banyak method,
+dan method-method itu bisa memakai pointer receiver.
+```

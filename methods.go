@@ -80,3 +80,56 @@ func Scale(v *Vertex4, f float64) {
 	v.X = v.X * f
 	v.Y = v.Y * f
 }
+
+/**
+ * 6. Method and pointer indirection
+ */
+// buat structnya dulu
+type Vertex5 struct {
+	X, Y float64
+}
+
+// Scale Method scale
+func (v *Vertex5) Scale2(f float64) {
+	v.X = v.X * f
+	v.Y = v.Y * f
+}
+
+// ScaleFunc2 function scale
+func ScaleFunc2(v *Vertex5, f float64) {
+	v.X = v.X * f
+	v.Y = v.Y * f
+}
+
+/**
+ * 7. Method and pointer indirection (2)
+ */
+type Vertex6 struct {
+	X, Y float64
+}
+
+// methods
+func (v Vertex6) Abs() float64 {
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+// Function
+func AbsFunc(v Vertex6) float64 {
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+/**
+ * 8. Memilih nilai receiver sebagai nilai atau pointer
+ */
+type Vertex7 struct {
+	X, Y float64
+}
+
+func (v *Vertex7) Scale(f float64) {
+	v.X = v.X * f
+	v.Y = v.Y * f
+}
+
+func (v *Vertex7) Abs() float64 {
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
