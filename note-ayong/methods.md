@@ -193,3 +193,45 @@ func Scale(v Vertex, f float64) {
 Program tetap bisa dicompile tapi datanya tidak berubah.
 
 ```
+#
+#
+### Methods and Pointer Indirection (Method dan pointer tidak langsung) ✮⋆˙
+```azure
+Pada Func:
+1. Kalau parameternya *T, Harus dikirim pointer (&v)
+2. Go tidak otomatis mengubah value jadi pointer
+
+Pada Method:
+1. Bisa dipanggil pakai value atau pointer
+2. Go otomatis mengubah value -> pointer jika perlu
+
+Example:
+1. Pada Function (fungsi harus eksplisit pakai pointer)
+    func ScaleFunc(v *Vertex, f float){
+        v.X = v.X * f
+        v.Y = v.Y * f
+    }
+
+    // pemanggilnya
+    var v Vertex
+
+    ScaleFunc(&v, 5)     => BENAR
+    ScaleFunc(v, 5)      => SALAH (karena ScaleFunc meminta *Vertex)
+
+2. Pada method dengan pointer-receiver (lebih flesibel)
+    func (v *Vertex) Scale(f float64) {
+        v.X = v.X * f
+        v.Y = v.Y * f
+    }
+    
+    // pemanggilnya
+    var v Vertex
+    v.Scale(5)          => BENAR
+
+    p:= &v
+    p.Scale(10)         => BENAR (dan lebih fleksibel)
+    
+Mengapa v.Scale(5) boleh? Padahal v itu bukan pointer.
+Karena GO otomatis melakukan ini:
+v.Scale(5) -> diubah menjadi (&v).Scale(5)
+```
