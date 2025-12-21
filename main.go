@@ -452,4 +452,55 @@ func main() {
 	var ii I = T{"hello"}
 	ii.M()
 	fmt.Println()
+
+	// 2) Interface values
+	// Variabel interface
+	var output Printer
+
+	// a. Interface diisi oleh *Message
+	output = &Message{Text: "Hello"}
+	showInterfaceValue(output)
+	output.Print()
+
+	// b. Interface diisi oleh Number
+	output = Number(math.Pi)
+	showInterfaceValue(output)
+	output.Print()
+	fmt.Println()
+
+	// 3) Interface dengan nilai nil
+	// Variabel interface
+	var musicPlayer Player
+
+	// a. interface berisi nilai nil
+	var emptySong *Song
+	musicPlayer = emptySong
+
+	describe(musicPlayer)
+	musicPlayer.Play()
+
+	// b. Interface berisi nilai nyata
+	musicPlayer = &Song{Title: "Hello"}
+
+	describe(musicPlayer)
+	musicPlayer.Play()
+	fmt.Println()
+
+	// 4) Nil interface values (isi interface dengan nil)
+	// Interface yang BELUM diisi (nil)
+	//var action Action
+	//
+	//showInfo(action)
+	//action.Do()
+	//fmt.Println()
+
+	// 5) The empty interface (interface kosong)
+	printInfo(value)
+
+	value = 42
+	printInfo(value)
+
+	value = "hello"
+	printInfo(value)
+	fmt.Println()
 }
