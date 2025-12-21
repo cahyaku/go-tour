@@ -463,4 +463,25 @@ Paket fmt (dan banyak lainnya) menggunakan interface ini untuk mencetak nilai.
 ```
 #
 #
-### 
+### Error ✮⋆˙
+```azure
+Tipe error adalah interface buatan mirip dengan fmt.Stringer:
+
+    type error interface {
+        Error() string
+    }
+
+Seperti dengan fmt.Stringer, paket fmt mencari interface error saat mencetak nilai.
+Fungsi terkadang mengembalikan nilai error, dan kode yang memanggilnya harus menangani
+error dengan memeriksa error bernilai nil.
+    
+    i, err := strconv.Atoi("42")
+    if err != nil {
+        fmt.Printf("couldn't convert number: %v\n", err)
+        return
+    }
+    fmt.Println("Converted integer: ", i)
+    
+    error yang nil menandakan sukses; 
+    error yang bukan-nil menandakan adanya kesalahan.
+```

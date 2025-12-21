@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 /**
  * 1. Interface dipenuhi secara implisit
@@ -121,4 +124,24 @@ type User struct {
 
 func (u User) String() string {
 	return fmt.Sprintf("%s (%d years)", u.FullName, u.AgeYears)
+}
+
+/**
+ * 8. Error
+ */
+type MyError struct {
+	When time.Time
+	What string
+}
+
+func (e *MyError) Error() string {
+	return fmt.Sprintf("at %v, %s",
+		e.When, e.What)
+}
+
+func run() error {
+	return &MyError{
+		time.Now(),
+		"tidak bekerja!",
+	}
 }

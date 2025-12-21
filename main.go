@@ -537,4 +537,25 @@ func main() {
 	fmt.Println(userOne, userTwo)
 	fmt.Println()
 
+	// Exercise 5 (Stringers)
+	hosts := map[string]IPAddr{
+		"loopback":  {127, 0, 0, 1},
+		"googleDNS": {8, 8, 8, 8},
+	}
+
+	for name, ip := range hosts {
+		fmt.Printf("%v: %v\n", name, ip)
+	}
+	fmt.Println()
+
+	// 10) Error
+	if err := run(); err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println()
+
+	// Exercise 6 Error
+	fmt.Println(CalculateSqrt(2))
+	fmt.Println(CalculateSqrt(-2))
+	fmt.Println()
 }

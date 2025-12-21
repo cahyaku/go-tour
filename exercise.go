@@ -78,3 +78,32 @@ func fibonacci() func() int {
 		return result
 	}
 }
+
+// Exercise 5 Stringers
+
+type IPAddr [4]byte
+
+// method String()
+func (ip IPAddr) String() string {
+	// ambil tipa elemen, gabungkan pakai titik, kemudian kembalikan sebagai String.
+	return fmt.Sprintf("%d.%d.%d.%d", ip[0], ip[1], ip[2], ip[3])
+}
+
+// Exercise 6 Error
+type ErrNegativeSqrt float64
+
+func (e ErrNegativeSqrt) Error() string {
+	return fmt.Sprintf("cannot calculate square root of negative number: %v", float64(e))
+}
+
+func CalculateSqrt(x float64) (float64, error) {
+	if x < 0 {
+		return 0, ErrNegativeSqrt(x)
+	}
+
+	z := 1.0
+	for i := 0; i < 10; i++ {
+		z -= (z*z - x) / (2 * z)
+	}
+	return z, nil
+}
