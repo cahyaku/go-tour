@@ -503,4 +503,25 @@ func main() {
 	value = "hello"
 	printInfo(value)
 	fmt.Println()
+
+	// 6) Ini semua contohnya langsung ada  di main saja:
+	// Penegasan tipe langsung (aman karena memang string)
+	var rawValue interface{} = "hello"
+
+	text := rawValue.(string)
+	fmt.Println(text)
+
+	// Penegasan tipe dengan dua nilai (aman)
+	textValue, isString := rawValue.(string)
+	fmt.Println(textValue, isString)
+
+	// Penegasan tipe ke float64 (gagal, tapi aman karena pakai ok)
+	numberValue, isNumber := rawValue.(float64)
+	fmt.Println(numberValue, isNumber)
+
+	// Penegasan tipe langsung ke float64 (akan panic)
+	numberValue = rawValue.(float64) // panic
+	fmt.Println(numberValue)
+	fmt.Println()
+
 }

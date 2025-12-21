@@ -263,7 +263,7 @@ Nilai: true | Tipe: bool
 ```
 #
 #
-### Kapan iinterface kosong sebaiknya dipakai? ✮⋆˙
+### Kapan interface kosong sebaiknya dipakai? ✮⋆˙
 ```azure
 - Saat tipe belum diketahui
 - Saat membuat fungsi umum
@@ -281,4 +281,122 @@ Ringkasan singkat interface kosong:
 ✔ Perlu type assertion untuk mengolah nilai
 ✔ Jangan dipakai berlebihan
 ```
+#
+#
+### Type assertions (Penegasan tipe)
+```azure
+Suatu penegasan tipe menyediakan akses ke isi interface di balik nilai konkritnya.
+t := i.(T)
 
+Perintah di atas menegaskan bahwa isi interface i menyimpan tipe konkrit T
+dan memberikan nilai T ke variabel t.
+
+Jika i tikda mengandung tipe T, perintah tersebut akan memicu panic.
+
+Untuk memeriksa apakah sebuah isi interface benar mengandung tipe tertentu,
+penegasan tipe bisa mengambalikan dua nilai:
+- nilai yang dikandung
+- nilai boolean yang memberitahu apakah penegasan sukses atau tidak.
+
+    t, ok := i.(T)
+
+Jika i mengandung T, maka t akan menyimpan nilai dan ok akan bernilai true.
+
+JIka tidak, ok akan bernilai false dan t akan bernilai kosong sesuai dengan tipe T,
+dan panic tidak akan terjadi.
+
+Ingatlah kesamaan anatara sintaks ini dengan membaca sebuah maps.
+```
+#
+#
+### Penegasan tipe berdasarkan pemahaman cahya ✮⋆˙
+```azure
+Misalnya terdapat interface kosong:
+    var data interface{}
+    data = 42
+
+Bagaimana caranya mengambil nilai 42 sebgai int, bukan sebagai interface{}?
+
+Jawabannya dengan penegasan tipe, bentuk dasar penegasan tipe:
+    t := data.(int)
+Artinya aku yakin bahwa data berisi nilai bertipe int.
+Jika benar: t berisi 42
+Jika salah: program panic (runtime error)
+
+Contoh yang paling basic
+    func main() {
+        var value interface{}
+        value = "hello"
+    
+        text := value.(string)
+        fmt.Println(text)
+    
+        number := value.(int) // ❌ panic
+        fmt.Println(number)
+    }
+	
+Baris .(int) error, karena isi value adalah string, bukan int.
+
+    
+Cara penegasan tipe dengan dua nilai.
+Untuk menghindari panic, gunakan bentuk dua nilai.
+
+	t, ok := value.(int)
+Artinya:
+- t = nilai hasil penegasan
+- ok = true jika tipe cocok, false jika tidak
+Contoh aman dan paling umum:
+
+    func main() {
+        var value interface{}
+        value = 42
+    
+        number, ok := value.(int)
+    if ok {
+            fmt.Println("Angka:", number)
+        } else {
+            fmt.Println("Bukan int")
+        }
+    }
+// Hasil output: 42
+
+
+Contoh saat tipe TIDAK cocok
+    func main() {
+        var value interface{}
+        value = "hello"
+    
+        number, ok := value.(int)
+        if ok {
+            fmt.Println(number)
+        } else {
+            fmt.Println("Isi interface bukan int")
+        }
+    }
+// Hasil output: Isi interface bukan int
+
+
+
+Kesimpulan:
+t bisa bernilai kosong
+Jika pengasan gagal: t, ok := value.(int)
+Maka:
+- ok == false
+- t == 0 (nilai defaultl int)
+
+Ini sama sepeti
+var t int // t = 0
+
+Perbandingannya:
+| Map                           | Type Assertion                   |
+| ----------------------------- | -------------------------------- |
+| v, ok := m["a"]               |  v, ok := i.(T)                  |
+| ok == true → key ada          |  ok == true → tipe cocok         |
+| ok == false → key tidak ada   |  ok == false → tipe tidak cocok  |
+Jadi:
+✔ Penegasan tipe = mengambil nilai asli dari interface
+✔ t := i.(T) → berisiko panic
+✔ t, ok := i.(T) → aman
+✔ ok menunjukkan apakah tipe cocok
+✔ Sintaksnya mirip membaca dari map
+```
