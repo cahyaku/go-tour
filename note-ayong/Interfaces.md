@@ -400,3 +400,67 @@ Jadi:
 ✔ ok menunjukkan apakah tipe cocok
 ✔ Sintaksnya mirip membaca dari map
 ```
+#
+#
+### Type switches (Penggunaan switch untuk tipe) ✮⋆˙
+```azure
+Sebuah tipe switch adalah bentuk yang memperbolehkan beberapa penegasan secara serial.
+Type switch di Go dipakai untuk mengecek tipe asli dari sebuah interface,
+lalu menjalankan kode yang berbeda tergantung tipe tersebut.
+
+
+Type switch diperlukan karena interface bisa menyimpan banyak tipe:
+    (nilai, tipe)
+kadang kita ingin tahu:
+- isi int?
+- isi string?
+- atau struct?
+Type switch menjawab semua itu.
+
+contoh sederhana:
+func checkType(i interface{}) {
+	switch v := i.(type) { // ambil tipe asli dari isi interface i, lalu simpan nilainya ke v dengan tipe aslinya.
+	case int:
+        fmt.Println("Ini int:", v)
+	case string:
+        fmt.Println("Ini string:", v)
+    default:
+        fmt.Println("Tipe tidak dikenal")
+	}
+}
+
+// pada main:
+func main() {
+	checkType(10)
+	checkType("halo")
+	checkType(true)
+}
+
+// Hasil output:
+    Ini int: 10
+    Ini string: halo
+    Tipe tidak dikenal
+
+Aturan penulisan:
+(i.type) hanya valid di dalam type switch.
+
+contoh:
+v := i.(type) => SALAH
+v, ok := i.(int) => BENAR
+```
+#
+#
+### Stringers
+```azure
+Interface yang ada dimanapun yaitu Stringer didefinisikan oleh paker fmt.
+
+    type Stringer interface {
+        String() string
+    }
+
+Sebuah Stringer adalah suatu tipe yang mendeskripsikan dirinya sendri sebagai string.
+Paket fmt (dan banyak lainnya) menggunakan interface ini untuk mencetak nilai.
+```
+#
+#
+### 

@@ -511,7 +511,7 @@ func main() {
 	text := rawValue.(string)
 	fmt.Println(text)
 
-	// Penegasan tipe dengan dua nilai (aman)
+	// 7) Penegasan tipe dengan dua nilai (aman)
 	textValue, isString := rawValue.(string)
 	fmt.Println(textValue, isString)
 
@@ -520,8 +520,21 @@ func main() {
 	fmt.Println(numberValue, isNumber)
 
 	// Penegasan tipe langsung ke float64 (akan panic)
-	numberValue = rawValue.(float64) // panic
+	// buka komen untuk tes hasil panic
+	//numberValue = rawValue.(float64) // panic
 	fmt.Println(numberValue)
+	fmt.Println()
+
+	// 8) Penggunaan switch untuk tipe
+	cekTipe(21)
+	cekTipe("hello")
+	cekTipe(true)
+	fmt.Println()
+
+	// 9) Stringers
+	userOne := User{"Arthur Dent", 42}
+	userTwo := User{"Zaphod Beeblebrox", 9001}
+	fmt.Println(userOne, userTwo)
 	fmt.Println()
 
 }

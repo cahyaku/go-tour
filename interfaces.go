@@ -95,3 +95,30 @@ var value interface{}
 func printInfo(data interface{}) {
 	fmt.Printf("(nilai = %v, tipe = %T)\n", data, data)
 }
+
+/**
+ * 6. semua langsung di main
+ * 7. Penggunaan switch untuk tipe
+ */
+func cekTipe(data interface{}) {
+	switch nilai := data.(type) {
+	case int:
+		fmt.Printf("Dua kali %v adalah %v\n", nilai, nilai*2)
+	case string:
+		fmt.Printf("%q adalah %v bytes panjangnya\n", nilai, len(nilai))
+	default:
+		fmt.Printf("Saya tidak kenal dengan tipe %T!\n", nilai)
+	}
+}
+
+/**
+ * Stringers
+ */
+type User struct {
+	FullName string
+	AgeYears int
+}
+
+func (u User) String() string {
+	return fmt.Sprintf("%s (%d years)", u.FullName, u.AgeYears)
+}
