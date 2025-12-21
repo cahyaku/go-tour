@@ -71,3 +71,13 @@ Kesimpulan:
 
 Interface dapat menggunakan method dari package lain tanpa perlu menyediakan implementasi sendiri.
 ```
+#
+#
+### Interface values (Nilai interface)
+```azure
+Isi interface dapat dibayangkan sebagai sebuah pasangan nilai sebuah tipe:
+	(nilai, tipe)
+Sebuah intreface mengandung sebuah nilai dari tipe tertentu.
+Memanggil suatu method terhadap suatu interface akan mengeksekusi method
+dengan nama yang sama pada tipe yang dipegangnya.
+```
