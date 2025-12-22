@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"strings"
 )
 
@@ -106,4 +107,41 @@ func CalculateSqrt(x float64) (float64, error) {
 		z -= (z*z - x) / (2 * z)
 	}
 	return z, nil
+}
+
+// Exerise 7 Reader
+type MyReader struct{}
+
+// Read mengisi buffer dengan karakter 'A'
+func (r MyReader) Read(b []byte) (int, error) {
+	for i := range b {
+		b[i] = 'A'
+	}
+	return len(b), nil
+}
+
+// Exercise 8 Reader 2
+
+type rot13Reader struct {
+	r io.Reader
+}
+
+func (rr *rot13Reader) Read(b []byte) (int, error) {
+	n, err := rr.r.Read(b)
+
+	for i := 0; i < n; i++ {
+		c := b[i]
+
+		// huruf besar
+		if c >= 'A' && c <= 'Z' {
+			b[i] = 'A' + (c-'A'+13)%26
+		}
+
+		// huruf kecil
+		if c >= 'a' && c <= 'z' {
+			b[i] = 'a' + (c-'a'+13)%26
+		}
+	}
+
+	return n, err
 }

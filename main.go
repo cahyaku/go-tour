@@ -3,9 +3,13 @@ package main
 import (
 	"fmt"
 	"go-tour/contoh"
+	"image"
+	"io"
 	"math"
 	"math/cmplx"
 	"math/rand"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -558,4 +562,33 @@ func main() {
 	fmt.Println(CalculateSqrt(2))
 	fmt.Println(CalculateSqrt(-2))
 	fmt.Println()
+
+	// Reader
+	fmt.Println("======================")
+	fmt.Println("======= Reader =======")
+	fmt.Println("======================")
+
+	// membaca data
+	reader := strings.NewReader("Hello, Reader!")
+	readStream(reader)
+	fmt.Println()
+
+	// exercise 7 Reader
+	// tidak bisa, karena dia pakai inpot dari import "github.com/golang-id/tour/reader"
+	//reader.Validate(MyReader{})
+
+	// exercise 8 Reader
+	input := strings.NewReader("Lbh penpxrq gur pbqr!")
+	decoder := rot13Reader{r: input}
+	io.Copy(os.Stdout, &decoder)
+	fmt.Println()
+
+	// IMAGE
+	fmt.Println("======================")
+	fmt.Println("======= Image ========")
+	fmt.Println("======================")
+	m := image.NewRGBA(image.Rect(0, 0, 100, 100))
+	fmt.Println(m.Bounds())
+	fmt.Println(m.At(0, 0).RGBA())
+
 }
